@@ -153,6 +153,7 @@
         ref="listing"
         :class="user.viewMode + ' file-icons'"
       >
+        <div id="readme" style="display:initial"></div>
         <div>
           <div class="item header">
             <div></div>
@@ -397,6 +398,22 @@ export default {
     },
   },
   mounted: function () {
+    (async function displayREADME(){
+      const loc = window.location.pathname;
+      const dir = loc.substring(0, loc.lastIndexOf('/')).slice(7);
+      const url = `/api/resources/${dir}/README.html`;
+      const resp = await fetch(url);
+      if (!resp.ok) {
+        return;
+      }
+      const data = await resp.json();
+      let readme = document.getElementById("readme");
+      if (!readme) {
+        return;
+      }
+      readme.innerHTML = "<h3>README</h3>" + data.content;
+    })();
+
     // Check the columns size for the first time.
     this.colunmsResize();
 
