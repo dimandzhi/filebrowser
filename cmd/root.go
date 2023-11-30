@@ -21,14 +21,14 @@ import (
 	v "github.com/spf13/viper"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 
-	"github.com/filebrowser/filebrowser/v2/auth"
-	"github.com/filebrowser/filebrowser/v2/diskcache"
-	"github.com/filebrowser/filebrowser/v2/frontend"
-	fbhttp "github.com/filebrowser/filebrowser/v2/http"
-	"github.com/filebrowser/filebrowser/v2/img"
-	"github.com/filebrowser/filebrowser/v2/settings"
-	"github.com/filebrowser/filebrowser/v2/storage"
-	"github.com/filebrowser/filebrowser/v2/users"
+	"github.com/dimandzhi/filebrowser/v2/auth"
+	"github.com/dimandzhi/filebrowser/v2/diskcache"
+	"github.com/dimandzhi/filebrowser/v2/frontend"
+	fbhttp "github.com/dimandzhi/filebrowser/v2/http"
+	"github.com/dimandzhi/filebrowser/v2/img"
+	"github.com/dimandzhi/filebrowser/v2/settings"
+	"github.com/dimandzhi/filebrowser/v2/storage"
+	"github.com/dimandzhi/filebrowser/v2/users"
 )
 
 var (
