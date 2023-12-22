@@ -47,7 +47,6 @@
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
 	// "postCreateCommand": [
-	// 	// "migrate -path ${env:HOME}/src/wiki.leta.lv/dmitrijs_zigunovs/db/migrations/asr -database postgresql://postgres:${DB_PASSWORD}@db/postgres?sslmode=disable up"
 	// ]
 
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.

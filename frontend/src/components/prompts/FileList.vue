@@ -28,6 +28,7 @@
 import { mapState } from "vuex";
 import url from "@/utils/url";
 import { files } from "@/api";
+import displayREADME from "@/utils/fixme";
 
 export default {
   name: "file-list",
@@ -118,21 +119,7 @@ export default {
       }
     },
     itemClick: function (event) {
-      (async function displayREADME(){
-        const loc = window.location.pathname;
-        const dir = loc.substring(0, loc.lastIndexOf('/')).slice(7);
-        const url = `/api/resources/${dir}/README.html`;
-        const resp = await fetch(url);
-        if (!resp.ok) {
-          return;
-        }
-        const data = await resp.json();
-        let readme = document.getElementById("readme");
-        if (!readme) {
-          return;
-        }
-        readme.innerHTML = "<h3>README</h3>" + data.content;
-      })();
+      displayREADME();
       if (this.user.singleClick) this.next(event);
       else this.select(event);
     },

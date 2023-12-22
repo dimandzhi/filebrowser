@@ -28,6 +28,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import Errors from "@/views/Errors.vue";
 import Preview from "@/views/files/Preview.vue";
 import Listing from "@/views/files/Listing.vue";
+import displayREADME from "@/utils/fixme";
 
 function clean(path) {
   return path.endsWith("/") ? path.slice(0, -1) : path;
@@ -52,21 +53,7 @@ export default {
   computed: {
     ...mapState(["req", "reload", "loading"]),
     currentView() {
-      (async function displayREADME(){
-        const loc = window.location.pathname;
-        const dir = loc.substring(0, loc.lastIndexOf('/')).slice(7);
-        const url = `/api/resources/${dir}/README.html`;
-        const resp = await fetch(url);
-        if (!resp.ok) {
-          return;
-        }
-        const data = await resp.json();
-        let readme = document.getElementById("readme");
-        if (!readme) {
-          return;
-        }
-        readme.innerHTML = "<h3>README</h3>" + data.content;
-      })();
+      displayREADME();
       if (this.req.type == undefined) {
         return null;
       }
@@ -95,21 +82,7 @@ export default {
     },
   },
   mounted() {
-    (async function displayREADME(){
-      const loc = window.location.pathname;
-      const dir = loc.substring(0, loc.lastIndexOf('/')).slice(7);
-      const url = `/api/resources/${dir}/README.html`;
-      const resp = await fetch(url);
-      if (!resp.ok) {
-        return;
-      }
-      const data = await resp.json();
-      let readme = document.getElementById("readme");
-      if (!readme) {
-        return;
-      }
-      readme.innerHTML = "<h3>README</h3>" + data.content;
-    })();
+    displayREADME();
     window.addEventListener("keydown", this.keyEvent);
   },
   beforeDestroy() {
@@ -124,21 +97,7 @@ export default {
   methods: {
     ...mapMutations(["setLoading"]),
     async fetchData() {
-      (async function displayREADME(){
-        const loc = window.location.pathname;
-        const dir = loc.substring(0, loc.lastIndexOf('/')).slice(7);
-        const url = `/api/resources/${dir}/README.html`;
-        const resp = await fetch(url);
-        if (!resp.ok) {
-          return;
-        }
-        const data = await resp.json();
-        let readme = document.getElementById("readme");
-        if (!readme) {
-          return;
-        }
-        readme.innerHTML = "<h3>README</h3>" + data.content;
-      })();
+      displayREADME();
       // Reset view information.
       this.$store.commit("setReload", false);
       this.$store.commit("resetSelected");
